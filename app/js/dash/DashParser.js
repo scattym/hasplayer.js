@@ -320,10 +320,12 @@ Dash.dependencies.DashParser = function () {
                 json = null,
                 ironed = null;
 
+           console.log("Incoming base url" + manifest.BaseURL );
             try {
                 //this.debug.log("Converting from XML.");
                 manifest = converter.xml_str2json(data);
                 json = new Date();
+
 
                 if (!manifest.hasOwnProperty("BaseURL")) {
                     //this.debug.log("Setting baseURL: " + baseUrl);
@@ -336,7 +338,7 @@ Dash.dependencies.DashParser = function () {
                         manifest.BaseURL = baseUrl + manifest.BaseURL;
                     }
                 }
-
+                console.log("Outgoing base url" + manifest.BaseURL );
                 //this.debug.log("Flatten manifest properties.");
                 iron.run(manifest);
                 ironed = new Date();
